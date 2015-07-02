@@ -20,4 +20,9 @@
  # #11
      @entries.insert(index, Entry.new(name, phone, email))
    end
+
+   def remove_entry(name)
+     @entries.delete_if {|entry| entry.name == name}
+   end
  end
+
