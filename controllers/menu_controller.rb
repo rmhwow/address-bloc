@@ -16,6 +16,7 @@
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - View Entry Number n"
      print "Enter your selection: "
  
  # #3
@@ -41,6 +42,9 @@
        puts "Good-bye!"
  # #8
        exit(0)
+     when 6
+      system "clear"
+      view_entry_number
  # #9
      else
        system "clear"
@@ -76,7 +80,15 @@
      system "clear"
      puts "New entry created"
    end
- 
+  def view_entry_number
+     selection = gets.chomp.to_i
+     puts @address_book.entries[selection + 1]
+     if selection > @address_book.entries.length
+      puts "Sorry that is not a valid number. Try smaller!"
+    end
+  end
+    
+  end
    def search_entries
    end
  
@@ -103,5 +115,5 @@
        puts "#{selection} is not a valid input"
        entries_submenu(entry)
      end
-   end
+   # end
  end
