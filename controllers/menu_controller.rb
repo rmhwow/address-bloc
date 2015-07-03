@@ -17,6 +17,7 @@
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
      puts "6 - View Entry Number n"
+     puts "7 - Delete All Entries"
      print "Enter your selection: "
  
  # #3
@@ -45,7 +46,10 @@
      when 6
       system "clear"
       view_entry_number
- # #9
+    when 7
+      system "clear"
+      delete_all_entries
+      main_menu
      else
        system "clear"
        puts "Sorry, that is not a valid input"
@@ -103,6 +107,10 @@
        puts "No match found for #{name}"
      end
    end
+
+   def delete_all_entries
+     @address_book.entries.clear
+   end
  
    def read_csv
       print "Enter CSV file to import: "
@@ -152,7 +160,8 @@
      @address_book.entries.delete(entry)
      puts "#{entry.name} has been deleted"
     end
-       def edit_entry(entry)
+    
+    def edit_entry(entry)
  # #4
      print "Updated name: "
      name = gets.chomp
@@ -172,7 +181,7 @@
    # end
     def search_submenu(entry)
  # #12
-     puts "\nd - delete entry"
+     puts "d - delete entry"
      puts "e - edit this entry"
      puts "m - return to main menu"
  # #13
@@ -198,4 +207,5 @@
        search_submenu(entry)
      end
    end
+  
  end
